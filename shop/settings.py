@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-(u=!e=q-)j4@8+0-*b+z!&ja(1*=l=srknqmq9nk2%@(yo)pv6
 DEBUG = False
 #DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'shop-bot.onrender.com',]
+ALLOWED_HOSTS = ['127.0.0.1', 'shop-bot-29vw.onrender.com',]
 
 
 # Application definition
