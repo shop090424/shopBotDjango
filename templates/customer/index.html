@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "List" %}{% endblock title %}
+{% block header %}{% endblock header %}
+{% block content %}
+<h2>{% trans "customers" %}</h2>
+{% if customer.count > 0 %}
+<div class="row">
+	<table id="myTable" class="table-manager" style="width:100%">
+		<thead>
+			<tr>
+				<th><p>{% trans "date_joined" %}</p></th>
+				<th><p>{% trans "first_name" %}</p></th>
+				<th><p>{% trans "last_name" %}</p></th>
+				<th><p>{% trans "phone_number" %}</p></th>
+				<th><p>{% trans "telegram_id" %}</p></th>
+				<th><p></p></th>				
+			</tr>
+		</thead>
+		<tbody>
+			{% for p in customer %}
+			<tr>
+				<td><p>{{ p.date_joined | date:"d.m.Y H:i"}}</p></td>	
+				<td><p>{{ p.first_name }}</p></td>	
+				<td><p>{{ p.last_name }}</p></td>	
+				<td><p>{{ p.phone_number }}</p></td>	
+				<td><p>{{ p.telegram_id }}</p></td>	
+				<td>						
+					<p>
+					<a href="{% url 'customer_read' p.id %}">{% trans "View" %}</a>
+					</p>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endif %}
+{% endblock content %}
+

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% endblock title %}
+{% block header %}{% endblock header %} 
+{% block content %}
+<div class="div-width-100-text-center">
+	<h3>{% trans "Contacts" %}</h3>
+</div>
+<div class="row">
+	<div class="col-md-3">
+		<br>
+		<h2 align="center">MOBILE STORE</h2>
+		{% if LANGUAGE_CODE == 'kk' %}
+			<p align="center">Ұялы телефон дүкені</p>
+			<address>
+				<p>пр. Қабанбай батыр 11/5, Астана 020000<br>
+			</address>				
+		{% else %}
+			<p align="center">Магазин сотовых телефонов</p>
+			<address>
+				<p>просп. Кабанбай Батыра 11/5, Астана 020000<br>
+			</address>				
+		{% endif %}
+	</div>
+	<div class="col-md-9" style="position:relative;overflow:hidden;">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2503.3055714678885!2d71.41026647688247!3d51.13971593749698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x424587058c90d549%3A0xf079f37deb59e996!2z0JHQpiDQndKx0YDQu9GLINCe0YDQtNCw!5e0!3m2!1sru!2skz!4v1713285191993!5m2!1sru!2skz" width="100%" height="500px" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+	</div>
+</div>
+{% endblock content %}

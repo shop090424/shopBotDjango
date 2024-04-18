@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "movement" %}{% endblock title %}
+{% block header %}{% endblock header %}
+{% block content %}
+<h2>{% trans "application" %}</h2>
+<p><strong>{% trans "telegram_id" %}</strong>: {{ app.telegram_id }} </p>
+<h4>{{ app.date_application | date:"d.m.Y H:i" }}</h4>
+<p>{{ app.catalog  }}</p>
+<hr>
+<h2>{% trans "movement" %}</h2>
+<p><a href="{% url 'movement_create' application_id %}">{% trans "Add" %}</a></p>					
+<hr>
+{% if movement.count > 0 %}
+<table id="myTable" class="table-manager" style="width:100%">
+	<thead>
+		<tr>
+			<th><p>{% trans "datem" %}</p></th>
+			<th><p>{% trans "status" %}</p></th>
+			<th><p>{% trans "details" %}</p></th>
+			<th><p></p></th>					
+		</tr>
+	</thead>
+	<tbody>
+		{% for p in movement %}
+		<tr>
+			<td>
+				<p>{{ p.datem | date:"d.m.Y H:i"}}</p>
+			</td>
+			<td>
+				<p>{{ p.status }}</p>
+			</td>
+			<td>
+				<p>{{ p.details }}</p>
+			</td>				
+			<td>
+				<p>
+				<a href="{% url 'movement_edit' p.id application_id %}">{% trans "Change" %}</a> |
+				<a href="{% url 'movement_read' p.id application_id %}">{% trans "View" %}</a> |
+				<a onclick="return confirm('Удалить запись?')" href="{% url 'movement_delete' p.id application_id %}">{% trans "Delete" %}</a>
+				</p>
+			</td>			
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endif %}
+<div class="row justify-content-center">
+	<a class="btn btn-outline-info" style="width:120px"  href="{% url 'application_index' %}">{% trans "Back" %}</a>
+</div>
+{% endblock content %}
+

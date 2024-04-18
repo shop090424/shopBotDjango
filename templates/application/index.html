@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "List" %}{% endblock title %}
+{% block header %}{% endblock header %}
+{% block content %}
+<h2>{% trans "applications" %}</h2>
+<div class="row">
+	<table id="myTable" class="table-manager" style="width:100%">
+		<thead>
+			<tr>
+				<th><p>{% trans "date_application" %}</p></th>
+				<th><p>{% trans "telegram_id" %}</p></th>
+				<th><p>{% trans "catalog_title" %}</p></th>
+				<th><p>{% trans "price" %}</p></th>
+				<th><p></p></th>				
+			</tr>
+		</thead>
+		<tbody>
+			{% for p in application %}
+			<tr>
+				<td>
+					<p>{{ p.date_application | date:"d.m.Y H:i" }}</p>
+					<p><a href="{% url 'movement_index' p.id%}">{% trans "movements" %}</a></p>		
+				</td>	
+				<td><p>{{ p.telegram_id }}</p><p>{{ p.first_name }}<br>{{ p.last_name }}<br>{{ p.phone_number }}<br></p></td>	
+				<td><p>{{ p.category }}<br>{{ p.catalog_title }}</p></td>	
+				<td><p>{{ p.price }}</p></td>	
+				<td>						
+					<p>
+					<a href="{% url 'application_read' p.id %}">{% trans "View" %}</a> |
+					<a onclick="return confirm('Удалить запись?')" href="{% url 'application_delete' p.id %}">{% trans "Delete" %}</a>
+					</p>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+{% endblock content %}
+

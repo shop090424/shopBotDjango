@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "View" %}{% endblock title %}
+{% block content %}
+<h2>{% trans "application" %}</h2>
+<div class="row justify-content-center">
+	<div class="card" style="width:100%">
+		<div class="card-header">	
+			<p>{{ application.date_application | date:"d.m.Y H:i" }}</p>		
+			<h4>{{ application.first_name }} {{ application.last_name }}</h4>							
+			<p><strong>{% trans "phone_number" %}</strong>: {{ application.phone_number }}</p>			
+			<p><strong>{% trans "telegram_id" %}</strong>: {{ application.telegram_id }}</p>			
+		</div>
+		<div class="card-body">
+			<p><strong>{% trans "category" %}</strong>: {{ application.category }}</p>			
+			<p><strong>{% trans "catalog_title" %}</strong>: {{ application.catalog_title }}</p>			
+		</div>
+		<div class="card-footer">				
+			<p><strong>{% trans "price" %}</strong>: {{ application.price }}</p>	
+		</div>		
+	</div>
+	<br>
+	<div class="div-button-center">
+		<a class="btn btn-outline-info" style="width:120px" href="{% url 'application_index' %}">{% trans "Back" %}</a> 	
+	</div>	
+</div>
+{% endblock content %}

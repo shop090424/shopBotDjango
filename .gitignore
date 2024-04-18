@@ -1,0 +1,6 @@
+__pychache__/
+*.pyc
+bot/
+documents/
+backup/
+db.sqlite3

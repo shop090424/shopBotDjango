@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{% trans "Reports" %}{% endblock title %}
+{% block header %}{% endblock header %}
+{% block content %}
+<div class="div-width-100-text-center">
+	<h3>{% trans "report_1" %}</h3>
+</div>
+
+<form method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div style="margin-top:10px">
+		<p>{% trans "Date range" %}:		
+			<input type="date" value="{{start_date}}" name ="start_date" id ="start_date">
+			<input type="date" value="{{finish_date}}" name = "finish_date" id ="finish_date">
+		</p>
+	</div>
+	<div class="row" style="margin-top:10px">
+		<button class="btn btn-outline-success" name="searchBtn" style="width:120px; margin:5px">{% trans "Go" %}</button>
+		<button class="btn btn-outline-primary" name="resetBtn" type="submit" onClick="window.location.reload();" style="width:120px; margin:5px">{% trans "Reset" %}</button>
+	</div>
+</form>
+<hr>
+<div class="row">
+	<table id="table" class="table-manager" style="width:100%">
+		<thead>
+			<tr>
+				<th><p>{% trans "date_application" %}</p></th>
+				<th><p>{% trans "telegram_id" %}</p></th>
+				<th><p>{% trans "catalog_title" %}</p></th>
+				<th><p>{% trans "price" %}</p></th>
+				<th><p>{% trans "final" %}</p></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for r in report %}
+			<tr>
+				<td><p>{{ r.date_application | date:"d.m.Y H:i" }}</p></td>	
+				<td><p>{{ r.telegram_id }}</p><p>{{ r.first_name }}<br>{{ r.last_name }}<br>{{ r.phone_number }}<br></p></td>	
+				<td><p>{{ r.category }}<br>{{ r.catalog_title }}</p></td>	
+				<td><p>{{ r.price }}</p></td>	
+				<td><p>{{ r.final }}</p></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<p><strong>{% trans "total" %}</strong>: {{ total.price__sum  }}</p>
+</div>		
+
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "View" %}{% endblock title %}
+{% block content %}
+<h2>{% trans "customer" %}</h2>
+<div class="row justify-content-center">
+	<div class="card" style="width:100%">
+		<div class="card-header">
+			<h4>{{ customer.first_name }} {{ customer.last_name }}</h4>				
+		</div>
+		<div class="card-body">
+			<p><strong>{% trans "phone_number" %}</strong>: {{ customer.phone_number }}</p>						
+			<p><strong>{% trans "date_joined" %}</strong>: {{ customer.date_joined | date:"d.m.Y H:i" }}</p>			
+		</div>
+		<div class="card-footer">	
+			<p><strong>{% trans "telegram_id" %}</strong>: {{ customer.telegram_id }}</p>					
+		</div>		
+	</div>
+	<br>
+	<div class="div-button-center">
+		<a class="btn btn-outline-info" style="width:120px" href="{% url 'customer_index' %}">{% trans "Back" %}</a> 	
+	</div>	
+</div>
+{% endblock content %}

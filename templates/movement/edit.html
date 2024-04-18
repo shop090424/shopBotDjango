@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Change" %}{% endblock title %}
+{% block header %}{% endblock header %}
+{% block content %}
+<h2>{% trans "application" %}</h2>
+<h4>{{ app.datea| date:"d.m.Y"  }}</h4>
+<h4>{{ app.user  }}</h4>
+<h4>{{ app.user.first_name }} {{ app.user.last_name }}</h4>
+<h4>{{ app.title  }}</h4>
+<p>{{ app.details  }}</p>
+<hr>
+<h2>{% trans "movement" %}</h2>
+<form method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+    <table>
+        {{ form }}
+    </table>
+	<div class="div-button-center">
+		<button type="submit" class="btn btn-outline-success" style="width:120px">{% trans "Save" %}</button>
+	<a class="btn btn-outline-info" style="width:120px" href="{% url 'movement_index' application_id %}">{% trans "Back" %}</a>  
+	</div>
+</form>
+<script type="text/javascript">
+	$(".chosen").chosen();
+</script>
+{% endblock content %}
