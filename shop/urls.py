@@ -59,9 +59,9 @@ urlpatterns = [
     path('application/read/<int:id>/', views.application_read, name='application_read'),
 
     path('movement/index/<int:application_id>/', views.movement_index, name='movement_index'),
-    #path('movement/create/<int:application_id>/', views.movement_create, name='movement_create'),
+    path('movement/create/<int:application_id>/', views.movement_create, name='movement_create'),
     path('movement/edit/<int:id>/<int:application_id>/', views.movement_edit, name='movement_edit'),
-    #path('movement/delete/<int:id>/<int:application_id>/', views.movement_delete, name='movement_delete'),
+    path('movement/delete/<int:id>/<int:application_id>/', views.movement_delete, name='movement_delete'),
     path('movement/read/<int:id>/<int:application_id>/', views.movement_read, name='movement_read'),
 
     path('report/report_1/', views.report_1, name='report_1'),
