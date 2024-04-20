@@ -28,6 +28,7 @@
 				<th><p>{% trans "category" %}</p></th>
 				<th><p>{% trans "catalog_title" %}</p></th>
 				<th><p>{% trans "kolichestvo" %}</p></th>
+				<th><p>{% trans "total" %}</p></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -36,6 +37,7 @@
 				<td><p>{{ r.category }}</p></td>	
 				<td><p>{{ r.catalog_title }}<br></p></td>	
 				<td><p>{{ r.kolichestvo }}</p></td>	
+				<td><p>{{ r.summa }}</p></td>	
 			</tr>
 			{% endfor %}
 		</tbody>

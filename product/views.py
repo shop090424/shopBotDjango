@@ -150,7 +150,7 @@ def report_2(request):
                     where = " WHERE " + where + " "              
                 print(where)
         report = Customer.objects.raw("""
-SELECT 1 as id, category, catalog_title, COUNT(*) AS kolichestvo
+SELECT 1 as id, category, catalog_title, COUNT(*) AS kolichestvo, SUM(price) AS summa
 FROM view_application
 """ 
 + where +
